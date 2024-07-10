@@ -1,0 +1,33 @@
+.container {
+    display: flex;
+    height: 190px;
+    width: 200px;
+    flex-flow: row wrap;
+    background-color: rgb(64, 61, 61);
+    justify-content: center;
+    border: 5px solid black;
+    border-radius: 15px;
+    padding: 10px;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button {
+    display: flex;
+    flex-wrap: wrap;
+    height: 25px;
+    width: 45px;
+    background-color: grey;
+}
+
+.display {
+    display: flex;
+    flex-wrap: wrap;
+    width: 180px;
+    height: 25px;
+    background-color: rgb(64, 61, 61);
+}
