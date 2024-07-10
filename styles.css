@@ -5,8 +5,8 @@
     flex-flow: row wrap;
     background-color: rgb(64, 61, 61);
     justify-content: center;
-    border: 5px solid black;
-    border-radius: 15px;
+    border: 3px solid black;
+    border-radius: 5px;
     padding: 10px;
 }
 
@@ -16,12 +16,15 @@ body {
     align-items: center;
 }
 
-.button {
+button {
     display: flex;
     flex-wrap: wrap;
     height: 25px;
     width: 45px;
     background-color: grey;
+    justify-content: center;
+    box-sizing: border-box;
+    align-items: center;
 }
 
 .display {
@@ -30,4 +33,26 @@ body {
     width: 180px;
     height: 25px;
     background-color: rgb(64, 61, 61);
+    justify-content: end;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.first-line, .second-line, .third-line, .fourth-line, .fifth-line  {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.zero {
+    width: 92px;
+}
+
+.backspace, .clear {
+    width: 67px;   
+    background-color: rgb(64, 64, 64);
+}
+
+.operator {
+    background-color: orange;
 }
