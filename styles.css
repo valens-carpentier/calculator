@@ -27,6 +27,14 @@ button {
     align-items: center;
 }
 
+.solution {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
 .display {
     display: flex;
     flex-wrap: wrap;
@@ -36,6 +44,7 @@ button {
     justify-content: end;
     border: 1px solid black;
     border-radius: 5px;
+    text-align: center;
 }
 
 .first-line, .second-line, .third-line, .fourth-line, .fifth-line  {

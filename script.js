@@ -11,12 +11,13 @@ function multiply (a,b) {
 }
 
 function divide (a,b) {
-    return a/b;
+    if (b ===0) {
+        return "ERROR";
+        return a/b;
+    } else {
+        return a/b;
+    }  
 }
-
-let firstNumber;
-let secondNumber;
-let operator = "";
 
 function operate (firstNumber,secondNumber,operator) {        
     if (operator === "+"){
@@ -32,18 +33,65 @@ function operate (firstNumber,secondNumber,operator) {
     }
 }
 
-console.log(operate(3,4,"+"));
+let firstNumber = null;
+let secondNumber = null;
+let operator = "";
+let displayValue = "";
 
-/*
+const buttons = document.querySelectorAll('button');
+const display = document.querySelector(".display");
+const paraDisplay = document.createElement('p');
+paraDisplay.classList.add('solution');
+display.appendChild(paraDisplay);
 
-Create the functions that populate the display when you click the number buttons. 
-You should be storing the ‘display value’ in a variable somewhere for use in the next step.
+function updateDisplay() {
+    paraDisplay.textContent = displayValue;
+}
 
-Make the calculator work! You’ll need to store the first number and second number that are input into the calculator, 
-utilize the operator that the user selects, and then operate() on the two numbers when the user presses the “=” key.
-- You should already have the code that can populate the display, so once operate() has been called, update the display with 
-the ‘solution’ to the operation.
-- This is the hardest part of the project. You need to figure out how to store all the values and 
-call the operate function with them. Don’t feel bad if it takes you a while to figure out the logic.
+function clearDisplay() {
+    displayValue = "";
+    firstNumber = null;
+    secondNumber = null;
+    operator = null;
+    updateDisplay();
+}
 
-*/
+function setupButtons() {
+    buttons.forEach(button => {
+        button.addEventListener("click", () => {
+            const value = button.textContent;
+            if (!isNaN(value) || value === ",") {
+                // If the button is a number or a comma
+                displayValue += value;
+                updateDisplay();
+            } else if (value === '+' || value === '-' || value === '*' || value === '/') {
+                // If the button is an operator
+                if (firstNumber === null) {
+                    firstNumber = parseFloat(displayValue);
+                    operator = value;
+                    displayValue = ""; // Reset display for the next number
+                    updateDisplay();
+                }
+            } else if (value === '=') {
+                // If the button is equals
+                if (firstNumber !== null && operator !== null) {
+                    secondNumber = parseFloat(displayValue);
+                    displayValue = Math.round(operate(firstNumber, secondNumber, operator).toString());
+                    updateDisplay();
+                    // Reset for new calculation
+                    firstNumber = null;
+                    secondNumber = null;
+                    operator = null;
+                } else {
+                    displayValue = "ERROR";
+                    updateDisplay();
+                }
+            } else if (value === 'C') {
+                // Clear the display and reset
+                clearDisplay();
+            }
+        });
+    });
+}
+
+setupButtons();
