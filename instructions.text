@@ -1,0 +1,42 @@
+1. For two numbers (a & b), create these operator functions:
+  add()
+  subtract()
+  multiply()
+  divide()
+
+2. Create three variables for operands and operator:
+  a
+  b
+  operator
+
+3. Create function operate(a, b, operator) that calls on one of the 
+operator functions
+
+4. Create basic HTML calculator with ff elements:
+  button for each digit,
+  button for each operator,
+  button for equal sign,
+  button for decimal point,
+  button to clear (AC),
+  display
+
+5. Create function to populate display when number button is clicked
+  store 'display value' in a variable
+  - if x has no value, store the value in x when an operator is clicked
+  - if x has a value,
+    - clear display and show next value
+    - store the value in y
+
+6. Make the calculator work
+  - store the first and second number from user's input
+  - use the selected operator
+  - call operate() when user clicks '='
+    -- update display with answer from operate()
+
+
+Extra credit
+
+- Add a . button with possibility to add 1 comma per numner
+- Polish the UI
+- Build a "backspace button"
+- Add keyboard support
