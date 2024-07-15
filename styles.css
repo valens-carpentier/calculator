@@ -1,9 +1,9 @@
 .container {
     display: flex;
-    height: 190px;
-    width: 200px;
+    height: 300px;
+    width: 280px;
     flex-flow: row wrap;
-    background-color: rgb(64, 61, 61);
+    background-color: black;
     justify-content: center;
     border: 3px solid black;
     border-radius: 5px;
@@ -14,37 +14,36 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: monospace;
 }
 
 button {
     display: flex;
     flex-wrap: wrap;
-    height: 25px;
-    width: 45px;
+    height: 45px;
+    width: 65px;
     background-color: grey;
     justify-content: center;
     box-sizing: border-box;
     align-items: center;
-}
-
-.solution {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    width: 100%;
+    border-radius: 5px;
+    border: 2px solid black;
+    font-weight: bold;
 }
 
 .display {
     display: flex;
     flex-wrap: wrap;
-    width: 180px;
-    height: 25px;
-    background-color: rgb(64, 61, 61);
+    width: 240px;
+    height: 45px;
+    background-color: rgb(159, 159, 159);
     justify-content: end;
-    border: 1px solid black;
+    border: 3px solid black;
     border-radius: 5px;
     text-align: center;
+    padding-right: 10px;
+    font-size: large;
+    font-weight: bold;
 }
 
 .first-line, .second-line, .third-line, .fourth-line, .fifth-line  {
@@ -54,14 +53,18 @@ button {
 }
 
 .zero {
-    width: 92px;
+    width: 130px;
 }
 
 .backspace, .clear {
-    width: 67px;   
+    width: 97px;   
     background-color: rgb(64, 64, 64);
 }
 
 .operator {
     background-color: orange;
+}
+
+.clear, .backspace {
+    background-color: rgb(110, 165, 233);
 }

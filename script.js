@@ -37,10 +37,12 @@ let firstNumber = null;
 let secondNumber = null;
 let operator = "";
 let displayValue = "";
+let commaCount = 0;
 
 const buttons = document.querySelectorAll('button');
 const display = document.querySelector(".display");
 const paraDisplay = document.createElement('p');
+const commaBtn = document.getElementById('comma')
 paraDisplay.classList.add('solution');
 display.appendChild(paraDisplay);
 
@@ -53,6 +55,12 @@ function clearDisplay() {
     firstNumber = null;
     secondNumber = null;
     operator = null;
+    commaCount = 0;
+    updateDisplay();
+}
+
+function backSpace() {
+    displayValue = displayValue.slice(0,-1);
     updateDisplay();
 }
 
@@ -60,16 +68,26 @@ function setupButtons() {
     buttons.forEach(button => {
         button.addEventListener("click", () => {
             const value = button.textContent;
-            if (!isNaN(value) || value === ",") {
-                // If the button is a number or a comma
+
+            if (!isNaN(value)) {
+                // If the button is a number
                 displayValue += value;
                 updateDisplay();
+            } else if (value === ",") {
+                // If the button is a comma
+                if (commaCount < 1 && !displayValue.includes(",")) {
+                    displayValue += value;
+                    commaCount++;
+                    updateDisplay();
+                }
+
             } else if (value === '+' || value === '-' || value === '*' || value === '/') {
                 // If the button is an operator
                 if (firstNumber === null) {
                     firstNumber = parseFloat(displayValue);
                     operator = value;
                     displayValue = ""; // Reset display for the next number
+                    commaCount = 0;
                     updateDisplay();
                 }
             } else if (value === '=') {
@@ -82,6 +100,7 @@ function setupButtons() {
                     firstNumber = null;
                     secondNumber = null;
                     operator = null;
+                    commaCount = 0;
                 } else {
                     displayValue = "ERROR";
                     updateDisplay();
@@ -89,6 +108,9 @@ function setupButtons() {
             } else if (value === 'C') {
                 // Clear the display and reset
                 clearDisplay();
+            
+            } else if (value === "R") {
+                backSpace();
             }
         });
     });
