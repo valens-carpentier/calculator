@@ -117,3 +117,56 @@ function setupButtons() {
 }
 
 setupButtons();
+
+function setupKeyBoard() {
+        document.addEventListener("keydown", function(event) {
+            const value = event.key;
+
+            if (!isNaN(value)) {
+                // If the button is a number
+                displayValue += value;
+                updateDisplay();
+            } else if (value === ",") {
+                // If the button is a comma
+                if (commaCount < 1 && !displayValue.includes(",")) {
+                    displayValue += value;
+                    commaCount++;
+                    updateDisplay();
+                }
+
+            } else if (value === '+' || value === '-' || value === '*' || value === '/') {
+                // If the button is an operator
+                if (firstNumber === null) {
+                    firstNumber = parseFloat(displayValue);
+                    operator = value;
+                    displayValue = ""; // Reset display for the next number
+                    commaCount = 0;
+                    updateDisplay();
+                }
+            } else if (value === '=' || value === 'Enter') {
+                // If the button is equals
+                if (firstNumber !== null && operator !== null) {
+                    secondNumber = parseFloat(displayValue);
+                    displayValue = Math.round(operate(firstNumber, secondNumber, operator).toString());
+                    updateDisplay();
+                    // Reset for new calculation
+                    firstNumber = null;
+                    secondNumber = null;
+                    operator = null;
+                    commaCount = 0;
+                } else {
+                    displayValue = "ERROR";
+                    updateDisplay();
+                }
+            } else if (value === 'C' || value === "c") {
+                // Clear the display and reset
+                clearDisplay();
+            
+            } else if (value === "R" || value === "Backspace") {
+                backSpace();
+            }
+        });
+    };
+
+
+setupKeyBoard();
